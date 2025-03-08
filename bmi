@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div{
+display: grid;
+width: 50%;
+margin:auto;
+border: 1px solid;
+padding: 10px;
+}
+input{
+padding: 10px;
+margin-bottom: 5px;
+}
+h2{
+text-align: center;
+}
+input[type=submit]{
+background: green;
+margin-top:5px;
+color:white;
+font-size: 16px;
+}
+#demo{
+background: pink;
+}
+#demo1{
+background: hotpink;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<h2>BMI Calculator</h2>
+<label for="person">Gender:</label>
+<input list="gender" id="person">
+<datalist id="gender">
+<option value="Male"></option>
+<option value="Female"></option>
+<option value="Other"></option>
+</datalist>
+<label for="age">Age:</label>
+<input type="number" id="age" min="1" max="100">
+<label for="height">Height in meters:</label>
+<input type="number" id="height" >
+<label for="weight">Weight in kgs:</label>
+<input type="number" id="weight" >
+<input type="submit" value="Calculate" id="sub">
+<p id="demo"></p>
+<p id="demo1"></p>
+</div>
+<script>
+let text;
+let p = document.getElementById("demo");
+let p1 = document.getElementById("demo1");
+let high = document.getElementById("height");
+let wigh = document.getElementById("weight");
+let sub = document.getElementById("sub");
+sub.addEventListener("click",()=>{
+let y = Math.round(wigh.value/(high.value*high.value)); 
+if(y<18.5){
+p1.innerHTML ="Onderweight";
+
+}
+else if(y>18.5 && y<24.9){
+p1.innerHTML ="Healthy Weight"
+
+}
+else if(y>25 && y<29.9){
+p1.innerHTML ="Overweight"
+
+}
+else if(y>30 && y<34.5){
+p1.innerHTML ="Obesity Class1";
+p1.style.background="red";
+}
+else{
+p1.innerHTML ="unknown";
+
+}
+p.innerHTML = "Your BMI: " +" "+ y; 
+
+
+});
+</script>
+</body>
+</html>
